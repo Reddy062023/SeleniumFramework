@@ -2,51 +2,44 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'
-        jdk 'JDK17'
+        jdk 'Java 17'
+        maven 'Maven 3.9.2'
+    }
+
+    environment {
+        HEADLESS = 'true'
     }
 
     stages {
-
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/Reddy062023/SeleniumFramework.git'
             }
         }
 
-        stage('Build & Test') {
+        stage('Build') {
             steps {
-                bat 'mvn clean test -Dbrowser=chrome'
+                bat 'mvn clean compile -Dheadless=%HEADLESS%'
             }
         }
 
-        stage('Publish TestNG Results') {
+        stage('Run Tests') {
             steps {
-                junit 'target/surefire-reports/*.xml'
+                bat 'mvn test -Dheadless=%HEADLESS%'
             }
         }
 
-        stage('Allure Report') {
+        stage('Generate Allure Report') {
             steps {
-                allure([
-                    includeProperties: false,
-                    jdk: '',
-                    results: [[path: 'allure-results']]
-                ])
+                allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
             }
         }
     }
-    
 
     post {
         always {
-            archiveArtifacts artifacts: 'target/**', allowEmptyArchive: true
-        }
-        success {
-            echo '✅ Tests passed'
-        }
-        failure {
-            echo '❌ Tests failed'
+            junit '**/target/surefire-reports/*.xml'
+            archiveArtifacts artifacts: '**/target/surefire-reports/*.xml', allowEmptyArchive: true
         }
     }
 }

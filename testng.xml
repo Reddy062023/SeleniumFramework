@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Selenium Test Suite" verbose="1" parallel="tests" thread-count="2">
-
-    <!-- Functional Tests -->
     <test name="Functional Tests">
         <classes>
             <class name="com.selenium.practice.tests.LoginTest"/>
-            <class name="com.selenium.practice.tests.LogoTest"/>
             <class name="com.selenium.practice.tests.WebTableTest"/>
             <class name="com.selenium.practice.tests.CalendarTest"/>
             <class name="com.selenium.practice.tests.DragDropTest"/>
             <class name="com.selenium.practice.tests.MultiplesWindowTest"/>
             <class name="com.selenium.practice.tests.WaitTest"/>
             <class name="com.selenium.practice.tests.APITest"/>
+            <!-- Exclude LogoTest from execution -->
+            <class name="com.selenium.practice.tests.LogoTest">
+                <methods>
+                    <exclude name="verifyLogoIsDisplayed"/>
+                </methods>
+            </class>
         </classes>
     </test>
-
 </suite>

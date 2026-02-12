@@ -2,12 +2,8 @@ pipeline {
     agent any
 
     tools {
-        jdk 'Java 17'
-        maven 'Maven 3.9.2'
-    }
-
-    environment {
-        HEADLESS = 'true'
+        jdk 'JDK17'
+        maven 'Maven'
     }
 
     stages {
@@ -19,13 +15,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean compile -Dheadless=%HEADLESS%'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'mvn test -Dheadless=%HEADLESS%'
+                bat 'mvn test'
             }
         }
 

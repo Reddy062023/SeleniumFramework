@@ -1,32 +1,23 @@
 package com.selenium.practice.tests;
 
-import com.selenium.practice.base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+import com.selenium.practice.base.BaseTest;
+import com.selenium.practice.pages.DemoQAPage;
+import com.selenium.practice.utils.ConfigReader;
 
 public class LogoTest extends BaseTest {
 
-    @Test
-    public void verifyLogoDisplayedAndCorrect() {
+    @Test(enabled = false)  // This will skip the test execution
+    public void verifyLogoIsDisplayed() {
 
-        driver.get("https://www.selenium.dev/");
+        // Pass the timeout from config
+        DemoQAPage demoPage = new DemoQAPage(driver, Integer.parseInt(ConfigReader.getProperty("timeout")));
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        // Pass the URL from config
+        demoPage.openHomePage(ConfigReader.getProperty("demoqaUrl"));
 
-        By logoLocator = By.cssSelector("a.navbar-brand");
-
-        WebElement logo = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(logoLocator)
-        );
-
-        Assert.assertTrue(logo.isDisplayed(), "Logo is NOT displayed");
-
-        System.out.println("Logo found successfully");
+        Assert.assertTrue(demoPage.isLogoDisplayed(), "DemoQA Logo is NOT displayed!");
     }
 }

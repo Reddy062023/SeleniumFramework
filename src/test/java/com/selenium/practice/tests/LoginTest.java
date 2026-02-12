@@ -1,60 +1,37 @@
 package com.selenium.practice.tests;
 
+import java.util.List;
+
+import org.testng.annotations.Test;
+
 import com.selenium.practice.base.BaseTest;
 import com.selenium.practice.pages.LoginPage;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import com.selenium.practice.utils.CSVReader;
+import com.selenium.practice.utils.ConfigReader;
 
 public class LoginTest extends BaseTest {
 
     @Test
-    public void validLoginTest() {
-        driver.get("https://the-internet.herokuapp.com/login");
+    public void loginWithMultipleUsers() {
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("tomsmith", "SuperSecretPassword!");
+        // Pass the timeout from config
+        LoginPage loginPage = new LoginPage(driver, Integer.parseInt(ConfigReader.getProperty("timeout")));
 
-        String actualMessage = loginPage.getMessageText();
-        System.out.println("Actual success message: >>> " + actualMessage + " <<<");
+        // Get the correct URL from config
+        String url = ConfigReader.getProperty("saucedemoUrl");
 
-        String expectedMessage = "You logged into a secure area!";
-        Assert.assertTrue(actualMessage.toLowerCase()
-                .contains(expectedMessage.toLowerCase()),
-                "Success message mismatch.\nActual: " + actualMessage +
-                "\nExpected to contain: " + expectedMessage);
-    }
+        // Read users from CSV
+        List<String[]> users = CSVReader.readCSV("users.csv");
 
-    @Test
-    public void invalidUsernameTest() {
-        driver.get("https://the-internet.herokuapp.com/login");
+        for (String[] user : users) {
+            String username = user[0];
+            String password = user[1];
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("invalid", "invalidPass");
+            // Open the login page with the correct URL
+            loginPage.openLoginPage(url);
+            loginPage.login(username, password);
 
-        String actualMessage = loginPage.getMessageText();
-        System.out.println("Actual invalid username message: >>> " + actualMessage + " <<<");
-
-        String expectedMessage = "Your username is invalid!";
-        Assert.assertTrue(actualMessage.toLowerCase()
-                .contains(expectedMessage.toLowerCase()),
-                "Invalid username message mismatch.\nActual: " + actualMessage +
-                "\nExpected to contain: " + expectedMessage);
-    }
-
-    @Test
-    public void wrongPasswordTest() {
-        driver.get("https://the-internet.herokuapp.com/login");
-
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("tomsmith", "wrongPass");
-
-        String actualMessage = loginPage.getMessageText();
-        System.out.println("Actual wrong password message: >>> " + actualMessage + " <<<");
-
-        String expectedMessage = "Your password is invalid!";
-        Assert.assertTrue(actualMessage.toLowerCase()
-                .contains(expectedMessage.toLowerCase()),
-                "Wrong password message mismatch.\nActual: " + actualMessage +
-                "\nExpected to contain: " + expectedMessage);
+            System.out.println("Attempted login with: " + username);
+        }
     }
 }

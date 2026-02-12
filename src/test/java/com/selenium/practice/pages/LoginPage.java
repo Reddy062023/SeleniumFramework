@@ -1,9 +1,8 @@
 package com.selenium.practice.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,36 +10,35 @@ import java.time.Duration;
 
 public class LoginPage {
 
-    WebDriver driver;
-    
-    @FindBy(id = "username")
-    WebElement username;
-    
-    @FindBy(id = "password")
-    WebElement password;
-    
-    @FindBy(css = "button[type='submit']")
-    WebElement loginBtn;
-    
-    @FindBy(id = "flash")
-    WebElement flashMessage;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
-    public LoginPage(WebDriver driver) {
+    private By usernameInput = By.id("user-name");
+    private By passwordInput = By.id("password");
+    private By loginButton = By.id("login-button");
+
+    public LoginPage(WebDriver driver, int timeoutInSeconds) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
     }
 
-    public void login(String user, String pass) {
-        username.sendKeys(user);
-        password.sendKeys(pass);
+    // Open SauceDemo login page
+    public void openLoginPage(String url) {
+        driver.get(url);
+    }
+
+    // Login method with explicit waits
+    public void login(String username, String password) {
+        WebElement userField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInput));
+        WebElement passField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
+        WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+
+        userField.clear();
+        userField.sendKeys(username);
+
+        passField.clear();
+        passField.sendKeys(password);
+
         loginBtn.click();
-    }
-
-    public String getMessageText() {
-        // wait up to 10 seconds for flash message to be visible
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(flashMessage));
-        
-        return flashMessage.getText().trim();
     }
 }

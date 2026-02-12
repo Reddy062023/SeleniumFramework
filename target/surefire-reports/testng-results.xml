@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-02-12T15:43:42 EST" name="Surefire suite" finished-at="2026-02-12T15:44:17 EST" duration-ms="35599">
+    <groups>
+    </groups>
+    <test started-at="2026-02-12T15:43:42 EST" name="Surefire test" finished-at="2026-02-12T15:44:17 EST" duration-ms="35599">
+      <class name="com.selenium.practice.tests.DragDropTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.DragDropTest@36c88a32]" started-at="2026-02-12T15:43:51 EST" name="setUp" finished-at="2026-02-12T15:43:53 EST" duration-ms="1326" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="dragAndDropElements()[pri:0, instance:com.selenium.practice.tests.DragDropTest@36c88a32]" started-at="2026-02-12T15:43:53 EST" name="dragAndDropElements" finished-at="2026-02-12T15:43:54 EST" duration-ms="1380" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dragAndDropElements -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.DragDropTest@36c88a32]" started-at="2026-02-12T15:43:54 EST" name="tearDown" finished-at="2026-02-12T15:43:54 EST" duration-ms="507" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.selenium.practice.tests.DragDropTest -->
+      <class name="com.selenium.practice.tests.APITest">
+        <test-method signature="validateStatusCode()[pri:0, instance:com.selenium.practice.tests.APITest@6af93788]" started-at="2026-02-12T15:43:42 EST" name="validateStatusCode" finished-at="2026-02-12T15:43:42 EST" duration-ms="513" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateStatusCode -->
+      </class> <!-- com.selenium.practice.tests.APITest -->
+      <class name="com.selenium.practice.tests.WebTableTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.WebTableTest@10e92f8f]" started-at="2026-02-12T15:44:14 EST" name="setUp" finished-at="2026-02-12T15:44:15 EST" duration-ms="1538" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="verifyProductInTable()[pri:0, instance:com.selenium.practice.tests.WebTableTest@10e92f8f]" started-at="2026-02-12T15:44:15 EST" name="verifyProductInTable" finished-at="2026-02-12T15:44:17 EST" duration-ms="1277" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyProductInTable -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.WebTableTest@10e92f8f]" started-at="2026-02-12T15:44:17 EST" name="tearDown" finished-at="2026-02-12T15:44:17 EST" duration-ms="404" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.selenium.practice.tests.WebTableTest -->
+      <class name="com.selenium.practice.tests.MultipleWindowTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@1c93084c]" started-at="2026-02-12T15:44:01 EST" name="setUp" finished-at="2026-02-12T15:44:03 EST" duration-ms="1587" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testMultipleWindows()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@1c93084c]" started-at="2026-02-12T15:44:03 EST" name="testMultipleWindows" finished-at="2026-02-12T15:44:10 EST" duration-ms="7542" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMultipleWindows -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@1c93084c]" started-at="2026-02-12T15:44:10 EST" name="tearDown" finished-at="2026-02-12T15:44:11 EST" duration-ms="833" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.selenium.practice.tests.MultipleWindowTest -->
+      <class name="com.selenium.practice.tests.LoginTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.LoginTest@7880cdf3]" started-at="2026-02-12T15:43:54 EST" name="setUp" finished-at="2026-02-12T15:43:56 EST" duration-ms="1974" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="loginWithMultipleUsers()[pri:0, instance:com.selenium.practice.tests.LoginTest@7880cdf3]" started-at="2026-02-12T15:43:56 EST" name="loginWithMultipleUsers" finished-at="2026-02-12T15:44:01 EST" duration-ms="4183" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithMultipleUsers -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.LoginTest@7880cdf3]" started-at="2026-02-12T15:44:01 EST" name="tearDown" finished-at="2026-02-12T15:44:01 EST" duration-ms="465" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.selenium.practice.tests.LoginTest -->
+      <class name="com.selenium.practice.tests.WaitTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.WaitTest@6ef888f6]" started-at="2026-02-12T15:44:11 EST" name="setUp" finished-at="2026-02-12T15:44:13 EST" duration-ms="1576" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="waitUntilClickable()[pri:0, instance:com.selenium.practice.tests.WaitTest@6ef888f6]" started-at="2026-02-12T15:44:13 EST" name="waitUntilClickable" finished-at="2026-02-12T15:44:14 EST" duration-ms="1009" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- waitUntilClickable -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.WaitTest@6ef888f6]" started-at="2026-02-12T15:44:14 EST" name="tearDown" finished-at="2026-02-12T15:44:14 EST" duration-ms="324" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.selenium.practice.tests.WaitTest -->
+      <class name="com.selenium.practice.tests.CalendarTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.CalendarTest@ef9296d]" started-at="2026-02-12T15:43:42 EST" name="setUp" finished-at="2026-02-12T15:43:45 EST" duration-ms="2793" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="selectDateFromCalendar()[pri:0, instance:com.selenium.practice.tests.CalendarTest@ef9296d]" started-at="2026-02-12T15:43:45 EST" name="selectDateFromCalendar" finished-at="2026-02-12T15:43:51 EST" duration-ms="5883" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectDateFromCalendar -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.CalendarTest@ef9296d]" started-at="2026-02-12T15:43:51 EST" name="tearDown" finished-at="2026-02-12T15:43:51 EST" duration-ms="429" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.selenium.practice.tests.CalendarTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

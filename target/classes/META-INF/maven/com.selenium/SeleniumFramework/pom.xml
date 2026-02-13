@@ -20,9 +20,24 @@
         <poi.version>5.2.3</poi.version>
         <extentreports.version>5.0.9</extentreports.version>
         <webdrivermanager.version>5.5.0</webdrivermanager.version>
+        <allure.version>2.25.0</allure.version>
     </properties>
 
+    <!-- ✅ Allure BOM -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-bom</artifactId>
+                <version>${allure.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+
         <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -38,11 +53,10 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure TestNG adapter -->
+        <!-- Allure TestNG -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.21.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -81,11 +95,13 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Compiler plugin for Java 17 + Lombok support -->
+
+            <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -103,7 +119,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire plugin with Allure listener -->
+            <!-- Surefire plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -112,14 +128,23 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+
+                    <!-- ✅ Force Allure results directory -->
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+
+                    <!-- ✅ Force Allure listener -->
                     <properties>
                         <property>
                             <name>listener</name>
                             <value>io.qameta.allure.testng.AllureTestNg</value>
                         </property>
                     </properties>
+
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

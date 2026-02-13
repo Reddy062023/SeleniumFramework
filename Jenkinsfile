@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'       // Match your Jenkins global JDK
-        maven 'Maven'     // Match your Jenkins global Maven
-        allure 'Allure'   // Must match the Allure Commandline name in Jenkins Global Tool Config
+        jdk 'JDK17'       // Must match Jenkins global JDK tool name
+        maven 'Maven'     // Must match Jenkins global Maven tool name
+        allure 'Allure'   // Must match the Allure Commandline installation name in Jenkins
     }
 
     stages {
@@ -16,38 +16,35 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Cleaning and compiling the project..."
                 bat 'mvn clean compile -B'
             }
         }
 
         stage('Run Tests') {
             steps {
-                echo "Running all TestNG suites..."
-                // Run your testng.xml suite
-                bat 'mvn test -DsuiteXmlFile=testng.xml -B'
+                // Run TestNG with suite XML and generate Surefire reports
+                bat 'mvn clean test -DsuiteXmlFile=testng.xml -B'
             }
         }
 
         stage('Generate Allure Report') {
             steps {
                 echo "Generating Allure report..."
-                // Use results from target/allure-results
-                allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+                allure includeProperties: false, jdk: 'JDK17', results: [[path: 'target/allure-results']]
             }
         }
     }
 
     post {
         always {
-            echo "Publishing TestNG results to Jenkins..."
-            junit '**/target/surefire-reports/*.xml'
+            echo "Publishing test results to Jenkins..."
+            junit '**/target/surefire-reports/*.xml'  // TestNG results
             archiveArtifacts artifacts: '**/target/surefire-reports/*.xml', allowEmptyArchive: true
-            cleanWs() // Clean workspace for next run
+            cleanWs()  // Optional: cleans workspace for next run
         }
 
         success {
-            echo "Build, tests, and Allure report succeeded!"
+            echo "Build and tests succeeded! Allure report should be available in the job."
         }
 
         failure {

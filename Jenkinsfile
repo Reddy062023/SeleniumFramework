@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool name: 'Maven', type: 'maven'  // Your Jenkins Maven installation
-        JAVA_HOME  = tool name: 'JDK17', type: 'jdk'    // Your JDK installation
+        MAVEN_HOME = tool name: 'Maven', type: 'maven'
+        JAVA_HOME  = tool name: 'JDK17', type: 'jdk'
         PATH       = "${env.MAVEN_HOME}/bin;${env.JAVA_HOME}/bin;${env.PATH}"
     }
 
@@ -27,22 +27,21 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat "${MAVEN_HOME}/bin/mvn clean test -DsuiteXmlFile=testng.xml -B"
+                bat "${MAVEN_HOME}/bin/mvn test -B"
             }
         }
 
         stage('Generate Allure Report') {
             steps {
                 script {
-                    // Only generate Allure report if results exist
                     if (fileExists('target/allure-results')) {
                         echo "Generating Allure report..."
                         allure([
                             reportBuildPolicy: 'ALWAYS',
                             results: [[path: 'target/allure-results']],
                             includeProperties: true,
-                            jdk: 'JDK17',               // Specify JDK for Allure
-                            reportVersion: '2.21.0',    // Allure version
+                            jdk: 'JDK17',
+                            reportVersion: '2.21.0',
                             properties: []
                         ])
                         echo "Allure report successfully generated!"
@@ -59,15 +58,9 @@ pipeline {
             echo "Cleaning workspace..."
             cleanWs()
         }
-
         success {
             echo "Build and tests succeeded. Allure report ready!"
         }
-
-        unstable {
-            echo "Build is unstable. Check console output and Allure report."
-        }
-
         failure {
             echo "Build failed! Check console output."
         }

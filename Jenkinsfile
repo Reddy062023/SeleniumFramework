@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'       // Make sure this matches your Jenkins global tool
-        maven 'Maven'     // Make sure this matches your Jenkins global tool
-        allure 'Allure'   // Make sure Allure is installed in Jenkins
+        jdk 'JDK17'
+        maven 'Maven'
+        allure 'Allure'
     }
 
     stages {
@@ -16,37 +16,77 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean compile -B'  // Clean compile before running tests
+                bat 'mvn clean compile -B'
             }
         }
 
-        stage('Run Tests') {
+        stage('Run All Test Suites') {
             steps {
-                // Run TestNG tests and generate Surefire reports
-                bat 'mvn clean test -B'  // Added clean for fresh runs
+                script {
+                    // Example: If you have multiple TestNG XML files
+                    def suites = ['testng.xml'] // Add more XMLs if needed: ['suite1.xml','suite2.xml']
+
+                    for (s in suites) {
+                        echo "Running suite: ${s}"
+                        bat "mvn test -DsuiteXmlFile=${s} -B"
+                    }
+                }
             }
         }
 
-        stage('Generate Allure Report') {
+        stage('Combine Allure Results & Generate Report') {
             steps {
-                // Generate Allure report from results
-                allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+                script {
+                    def allureHome = tool name: 'Allure', type: 'AllureCommandline'
+
+                    withEnv(["PATH+ALLURE=${allureHome}\\bin"]) {
+
+                        // Ensure combined results folder exists
+                        bat 'if not exist target\\allure-results mkdir target\\allure-results'
+
+                        // Copy results from multiple suites (if separate folders exist)
+                        // Example: bat 'xcopy /E /I /Y module1\\target\\allure-results target\\allure-results'
+                        // Add additional xcopy lines for other modules/suites as needed
+
+                        // Preserve history
+                        bat '''
+                        if exist target\\allure-report\\history (
+                            xcopy /E /I /Y target\\allure-report\\history target\\allure-results\\history
+                        )
+                        '''
+
+                        // Generate single Allure report
+                        bat 'allure generate target/allure-results -o target/allure-report --clean'
+
+                        // Open report automatically
+                        bat 'start target\\allure-report\\index.html'
+                    }
+                }
             }
         }
     }
 
     post {
         always {
-            // Publish test results to Jenkins
-            junit '**/target/surefire-reports/*.xml'  // Publish Surefire results
-            // Archive Surefire XML files
+            junit '**/target/surefire-reports/*.xml'
+
             archiveArtifacts artifacts: '**/target/surefire-reports/*.xml', allowEmptyArchive: true
-            // Optional: clean workspace for next run
+            archiveArtifacts artifacts: 'target/allure-report/**/*', allowEmptyArchive: true
+
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'target/allure-report',
+                reportFiles: 'index.html',
+                reportName: 'Allure Report'
+            ])
+
             cleanWs()
         }
 
         success {
-            echo "Build and tests succeeded!"
+            echo "Build, all test suites, and Allure report generation succeeded!"
         }
 
         failure {

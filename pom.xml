@@ -37,6 +37,14 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+          
+    <!-- Allure TestNG adapter -->
+    <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-testng</artifactId>
+        <version>2.22.0</version>
+        <scope>test</scope>
+    </dependency>
 
         <!-- ExtentReports -->
         <dependency>

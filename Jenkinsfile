@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'       // Must match Jenkins global JDK tool name
-        maven 'Maven'     // Must match Jenkins global Maven tool name
-        allure 'Allure'   // Must match the Allure Commandline installation name in Jenkins
+        jdk 'JDK17'
+        maven 'Maven'
+        allure 'Allure'
     }
 
     stages {
@@ -22,29 +22,38 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                // Run TestNG with suite XML and generate Surefire reports
                 bat 'mvn clean test -DsuiteXmlFile=testng.xml -B'
             }
         }
 
         stage('Generate Allure Report') {
             steps {
-                echo "Generating Allure report..."
-                allure includeProperties: false, jdk: 'JDK17', results: [[path: 'target/allure-results']]
+                script {
+                    def resultsDir = "${env.WORKSPACE}\\target\\allure-results"
+                    if (fileExists(resultsDir)) {
+                        echo "Generating Allure report..."
+                        allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+                    } else {
+                        echo "Warning: Allure results folder not found! Skipping report."
+                    }
+                }
             }
         }
     }
 
     post {
         always {
-            echo "Publishing test results to Jenkins..."
-            junit '**/target/surefire-reports/*.xml'  // TestNG results
-            archiveArtifacts artifacts: '**/target/surefire-reports/*.xml', allowEmptyArchive: true
-            cleanWs()  // Optional: cleans workspace for next run
+            echo "Publishing TestNG results..."
+            junit '**/target/surefire-reports/*.xml'
+
+            echo "Archiving Allure report..."
+            archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
+
+            cleanWs()
         }
 
         success {
-            echo "Build and tests succeeded! Allure report should be available in the job."
+            echo "Build and tests succeeded!"
         }
 
         failure {

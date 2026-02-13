@@ -1,63 +1,73 @@
 pipeline {
     agent any
+
     environment {
-        MAVEN_HOME = tool 'Maven-3.9.4'   // Update with your Maven tool name in Jenkins
-        ALLURE_HOME = tool 'Allure'       // Allure CLI installed in Jenkins
-        PATH = "${env.MAVEN_HOME}/bin;${env.ALLURE_HOME}/bin;${env.PATH}"
+        MAVEN_HOME = tool name: 'Maven', type: 'maven'  // Your Jenkins Maven installation
+        JAVA_HOME  = tool name: 'JDK17', type: 'jdk'    // Your JDK installation
+        PATH       = "${env.MAVEN_HOME}/bin;${env.JAVA_HOME}/bin;${env.PATH}"
     }
 
     stages {
 
         stage('Checkout SCM') {
             steps {
-                checkout scm
+                git(
+                    url: 'https://github.com/Reddy062023/SeleniumFramework.git',
+                    branch: 'main',
+                    credentialsId: 'github-token'
+                )
             }
         }
 
         stage('Build') {
             steps {
-                bat "mvn clean compile -B"
+                bat "${MAVEN_HOME}/bin/mvn clean compile -B"
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat "mvn test -DsuiteXmlFile=testng.xml -B"
+                bat "${MAVEN_HOME}/bin/mvn clean test -DsuiteXmlFile=testng.xml -B"
             }
         }
 
         stage('Generate Allure Report') {
             steps {
                 script {
+                    // Only generate Allure report if results exist
                     if (fileExists('target/allure-results')) {
                         echo "Generating Allure report..."
-                        bat "allure generate target/allure-results -o allure-report --clean"
-                        echo "Allure report generated at allure-report"
+                        allure([
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']],
+                            includeProperties: true,
+                            jdk: 'JDK17',               // Specify JDK for Allure
+                            reportVersion: '2.21.0',    // Allure version
+                            properties: []
+                        ])
+                        echo "Allure report successfully generated!"
                     } else {
-                        echo "Warning: Allure results folder not found! Skipping report generation."
+                        echo "Warning: Allure results folder not found. Skipping report."
                     }
                 }
-            }
-        }
-
-        stage('Publish Results') {
-            steps {
-                junit 'target/surefire-reports/*.xml'
-                archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
             }
         }
     }
 
     post {
         always {
+            echo "Cleaning workspace..."
             cleanWs()
         }
+
         success {
-            echo "Build, tests, and Allure report succeeded!"
+            echo "Build and tests succeeded. Allure report ready!"
         }
+
         unstable {
-            echo "Build is unstable. Check test results or Allure report."
+            echo "Build is unstable. Check console output and Allure report."
         }
+
         failure {
             echo "Build failed! Check console output."
         }

@@ -1,139 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
+<testng-results ignored="1" total="8" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-11T23:05:10 EST" name="Selenium Suite" finished-at="2026-02-11T23:05:38 EST" duration-ms="27052">
+  <suite started-at="2026-02-12T19:29:05 EST" name="Selenium Test Suite" finished-at="2026-02-12T19:29:25 EST" duration-ms="19784">
     <groups>
     </groups>
-    <test started-at="2026-02-11T23:05:10 EST" name="Test Classes" finished-at="2026-02-11T23:05:38 EST" duration-ms="27052">
-      <class name="com.selenium.practice.tests.DragDropTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.DragDropTest@fbd1f6]" started-at="2026-02-11T23:05:26 EST" name="setup" finished-at="2026-02-11T23:05:27 EST" duration-ms="1005" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="dragAndDropElements()[pri:0, instance:com.selenium.practice.tests.DragDropTest@fbd1f6]" started-at="2026-02-11T23:05:27 EST" name="dragAndDropElements" finished-at="2026-02-11T23:05:28 EST" duration-ms="889" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- dragAndDropElements -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.DragDropTest@fbd1f6]" started-at="2026-02-11T23:05:28 EST" name="tearDown" finished-at="2026-02-11T23:05:28 EST" duration-ms="155" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.selenium.practice.tests.DragDropTest -->
+    <test started-at="2026-02-12T19:29:05 EST" name="Functional Tests" finished-at="2026-02-12T19:29:25 EST" duration-ms="19784">
       <class name="com.selenium.practice.tests.APITest">
-        <test-method signature="validateStatusCode()[pri:0, instance:com.selenium.practice.tests.APITest@1c1bbc4e]" started-at="2026-02-11T23:05:20 EST" name="validateStatusCode" finished-at="2026-02-11T23:05:20 EST" duration-ms="265" status="PASS">
+        <test-method signature="validateStatusCode()[pri:0, instance:com.selenium.practice.tests.APITest@79207381]" started-at="2026-02-12T19:29:24 EST" name="validateStatusCode" finished-at="2026-02-12T19:29:25 EST" duration-ms="285" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateStatusCode -->
       </class> <!-- com.selenium.practice.tests.APITest -->
-      <class name="com.selenium.practice.tests.WebTableTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.WebTableTest@7a8c8dcf]" started-at="2026-02-11T23:05:35 EST" name="setup" finished-at="2026-02-11T23:05:36 EST" duration-ms="977" status="PASS">
+      <class name="com.selenium.practice.tests.DragDropTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.DragDropTest@5884a914]" started-at="2026-02-12T19:29:17 EST" name="setUp" finished-at="2026-02-12T19:29:18 EST" duration-ms="1134" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyProductInTable()[pri:0, instance:com.selenium.practice.tests.WebTableTest@7a8c8dcf]" started-at="2026-02-11T23:05:36 EST" name="verifyProductInTable" finished-at="2026-02-11T23:05:37 EST" duration-ms="864" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="dragAndDropElements()[pri:0, instance:com.selenium.practice.tests.DragDropTest@5884a914]" started-at="2026-02-12T19:29:18 EST" name="dragAndDropElements" finished-at="2026-02-12T19:29:19 EST" duration-ms="867" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyProductInTable -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.WebTableTest@7a8c8dcf]" started-at="2026-02-11T23:05:37 EST" name="tearDown" finished-at="2026-02-11T23:05:38 EST" duration-ms="182" status="PASS">
+        </test-method> <!-- dragAndDropElements -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.DragDropTest@5884a914]" started-at="2026-02-12T19:29:19 EST" name="tearDown" finished-at="2026-02-12T19:29:19 EST" duration-ms="182" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.selenium.practice.tests.WebTableTest -->
+      </class> <!-- com.selenium.practice.tests.DragDropTest -->
       <class name="com.selenium.practice.tests.MultipleWindowTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@1ce24091]" started-at="2026-02-11T23:05:28 EST" name="setup" finished-at="2026-02-11T23:05:29 EST" duration-ms="980" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@50378a4]" started-at="2026-02-12T19:29:19 EST" name="setUp" finished-at="2026-02-12T19:29:20 EST" duration-ms="1053" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="testMultipleWindows()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@1ce24091]" started-at="2026-02-11T23:05:29 EST" name="testMultipleWindows" finished-at="2026-02-11T23:05:33 EST" duration-ms="4035" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="testMultipleWindows()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@50378a4]" started-at="2026-02-12T19:29:20 EST" name="testMultipleWindows" finished-at="2026-02-12T19:29:22 EST" duration-ms="2395" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMultipleWindows -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@1ce24091]" started-at="2026-02-11T23:05:33 EST" name="tearDown" finished-at="2026-02-11T23:05:34 EST" duration-ms="224" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.MultipleWindowTest@50378a4]" started-at="2026-02-12T19:29:22 EST" name="tearDown" finished-at="2026-02-12T19:29:22 EST" duration-ms="193" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.selenium.practice.tests.MultipleWindowTest -->
+      <class name="com.selenium.practice.tests.WebTableTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.WebTableTest@4d15107f]" started-at="2026-02-12T19:29:11 EST" name="setUp" finished-at="2026-02-12T19:29:12 EST" duration-ms="1097" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="verifyProductInTable()[pri:0, instance:com.selenium.practice.tests.WebTableTest@4d15107f]" started-at="2026-02-12T19:29:12 EST" name="verifyProductInTable" finished-at="2026-02-12T19:29:13 EST" duration-ms="934" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyProductInTable -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.WebTableTest@4d15107f]" started-at="2026-02-12T19:29:13 EST" name="tearDown" finished-at="2026-02-12T19:29:13 EST" duration-ms="144" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.selenium.practice.tests.WebTableTest -->
       <class name="com.selenium.practice.tests.LoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:10 EST" name="setup" finished-at="2026-02-11T23:05:12 EST" duration-ms="1577" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.LoginTest@433defed]" started-at="2026-02-12T19:29:05 EST" name="setUp" finished-at="2026-02-12T19:29:09 EST" duration-ms="3895" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="invalidUsernameTest()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:12 EST" name="invalidUsernameTest" finished-at="2026-02-11T23:05:13 EST" duration-ms="1063" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="loginWithMultipleUsers()[pri:0, instance:com.selenium.practice.tests.LoginTest@433defed]" started-at="2026-02-12T19:29:09 EST" name="loginWithMultipleUsers" finished-at="2026-02-12T19:29:10 EST" duration-ms="1620" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- invalidUsernameTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:13 EST" name="tearDown" finished-at="2026-02-11T23:05:13 EST" duration-ms="188" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:13 EST" name="setup" finished-at="2026-02-11T23:05:14 EST" duration-ms="1019" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="validLoginTest()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:14 EST" name="validLoginTest" finished-at="2026-02-11T23:05:15 EST" duration-ms="1044" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validLoginTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:15 EST" name="tearDown" finished-at="2026-02-11T23:05:16 EST" duration-ms="169" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:16 EST" name="setup" finished-at="2026-02-11T23:05:17 EST" duration-ms="1032" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="wrongPasswordTest()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:17 EST" name="wrongPasswordTest" finished-at="2026-02-11T23:05:18 EST" duration-ms="1595" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- wrongPasswordTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.LoginTest@5542c4ed]" started-at="2026-02-11T23:05:18 EST" name="tearDown" finished-at="2026-02-11T23:05:18 EST" duration-ms="187" status="PASS">
+        </test-method> <!-- loginWithMultipleUsers -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.LoginTest@433defed]" started-at="2026-02-12T19:29:10 EST" name="tearDown" finished-at="2026-02-12T19:29:11 EST" duration-ms="226" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.selenium.practice.tests.LoginTest -->
-      <class name="com.selenium.practice.tests.LogoTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.LogoTest@ba2f4ec]" started-at="2026-02-11T23:05:18 EST" name="setup" finished-at="2026-02-11T23:05:19 EST" duration-ms="1003" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyLogoDisplayedAndCorrect()[pri:0, instance:com.selenium.practice.tests.LogoTest@ba2f4ec]" started-at="2026-02-11T23:05:19 EST" name="verifyLogoDisplayedAndCorrect" finished-at="2026-02-11T23:05:20 EST" duration-ms="602" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLogoDisplayedAndCorrect -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.LogoTest@ba2f4ec]" started-at="2026-02-11T23:05:20 EST" name="tearDown" finished-at="2026-02-11T23:05:20 EST" duration-ms="172" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.selenium.practice.tests.LogoTest -->
       <class name="com.selenium.practice.tests.WaitTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.WaitTest@5dda768f]" started-at="2026-02-11T23:05:34 EST" name="setup" finished-at="2026-02-11T23:05:35 EST" duration-ms="1038" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.WaitTest@60f00693]" started-at="2026-02-12T19:29:22 EST" name="setUp" finished-at="2026-02-12T19:29:24 EST" duration-ms="1227" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="waitUntilClickable()[pri:0, instance:com.selenium.practice.tests.WaitTest@5dda768f]" started-at="2026-02-11T23:05:35 EST" name="waitUntilClickable" finished-at="2026-02-11T23:05:35 EST" duration-ms="754" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="waitUntilClickable()[pri:0, instance:com.selenium.practice.tests.WaitTest@60f00693]" started-at="2026-02-12T19:29:24 EST" name="waitUntilClickable" finished-at="2026-02-12T19:29:24 EST" duration-ms="655" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- waitUntilClickable -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.WaitTest@5dda768f]" started-at="2026-02-11T23:05:35 EST" name="tearDown" finished-at="2026-02-11T23:05:35 EST" duration-ms="142" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.WaitTest@60f00693]" started-at="2026-02-12T19:29:24 EST" name="tearDown" finished-at="2026-02-12T19:29:24 EST" duration-ms="117" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.selenium.practice.tests.WaitTest -->
       <class name="com.selenium.practice.tests.CalendarTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.selenium.practice.tests.CalendarTest@55fe41ea]" started-at="2026-02-11T23:05:20 EST" name="setup" finished-at="2026-02-11T23:05:21 EST" duration-ms="962" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.selenium.practice.tests.CalendarTest@7b4c50bc]" started-at="2026-02-12T19:29:13 EST" name="setUp" finished-at="2026-02-12T19:29:14 EST" duration-ms="1118" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="selectDateFromCalendar()[pri:0, instance:com.selenium.practice.tests.CalendarTest@55fe41ea]" started-at="2026-02-11T23:05:21 EST" name="selectDateFromCalendar" finished-at="2026-02-11T23:05:26 EST" duration-ms="4649" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="selectDateFromCalendar()[pri:0, instance:com.selenium.practice.tests.CalendarTest@7b4c50bc]" started-at="2026-02-12T19:29:14 EST" name="selectDateFromCalendar" finished-at="2026-02-12T19:29:16 EST" duration-ms="2410" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectDateFromCalendar -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.CalendarTest@55fe41ea]" started-at="2026-02-11T23:05:26 EST" name="tearDown" finished-at="2026-02-11T23:05:26 EST" duration-ms="220" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.selenium.practice.tests.CalendarTest@7b4c50bc]" started-at="2026-02-12T19:29:16 EST" name="tearDown" finished-at="2026-02-12T19:29:17 EST" duration-ms="151" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.selenium.practice.tests.CalendarTest -->
-    </test> <!-- Test Classes -->
-  </suite> <!-- Selenium Suite -->
+    </test> <!-- Functional Tests -->
+  </suite> <!-- Selenium Test Suite -->
 </testng-results>

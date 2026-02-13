@@ -25,7 +25,9 @@ public class MultipleWindowTest extends BaseTest {
         );
 
         // Scroll + click safely
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", newTabBtn);
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({block:'center'});", newTabBtn);
+
         wait.until(ExpectedConditions.elementToBeClickable(newTabBtn)).click();
 
         String originalWindow = driver.getWindowHandle();

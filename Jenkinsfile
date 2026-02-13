@@ -34,6 +34,19 @@ pipeline {
             }
         }
 
+        // Verify if Allure results folder exists
+        stage('Verify Allure Results Folder') {
+            steps {
+                script {
+                    if (fileExists('target/allure-results')) {
+                        echo "Allure results folder found!"
+                    } else {
+                        echo "Warning: Allure results folder not found!"
+                    }
+                }
+            }
+        }
+
         // Generate Allure report if results are present
         stage('Generate Allure Report') {
             steps {

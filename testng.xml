@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <suite name="Selenium Test Suite" verbose="1" parallel="tests" thread-count="2">
+    
+    <!-- Add Allure listener here -->
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
     <test name="Functional Tests">
         <classes>
             <class name="com.selenium.practice.tests.LoginTest"/>
